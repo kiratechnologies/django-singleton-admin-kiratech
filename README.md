@@ -3,6 +3,10 @@ In dynamic applications, it can be somewhat of a pain to have static settings th
 
 This is great for things like OAuth settings for third parties, or dynamic settings that you need to pull for your site. 
 
+# Influenced By
+* https://github.com/RacingTadpole/django-singleton-admin
+* https://github.com/lazybird/django-solo
+
 # Example
 ```
 # models.py
