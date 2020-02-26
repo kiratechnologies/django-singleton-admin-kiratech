@@ -45,4 +45,7 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
 
     @property 
     def singleton_instance_id(self):
-        return self.model.objects.all()[0].pk
+        if self.model.objects.all():
+            return self.model.objects.all()[0].pk
+        else:
+            return 0 
