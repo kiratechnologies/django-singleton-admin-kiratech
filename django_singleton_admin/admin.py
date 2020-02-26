@@ -2,8 +2,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 
-class SingletonModelAdmin(admin.ModelAdmin):
-    change_form_template = "admin/django_singleton_admin/change_form.html"
+class DjangoSingletonModelAdmin(admin.ModelAdmin):
+    change_form_template = "django_singleton_admin/change_form.html"
 
     def has_add_permission(self, request):
         return False
@@ -12,7 +12,7 @@ class SingletonModelAdmin(admin.ModelAdmin):
         return False
 
     def get_urls(self):
-        urls = super(SingletonModelAdmin, self).get_urls()
+        urls = super(DjangoSingletonModelAdmin, self).get_urls()
 
         model_name = self.model._meta.model_name
         self.model._meta.verbose_name_plural = self.model._meta.verbose_name
@@ -36,7 +36,7 @@ class SingletonModelAdmin(admin.ModelAdmin):
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
         self.model.objects.get_or_create(pk=self.singleton_instance_id)
-        return super(SingletonModelAdmin, self).change_view(
+        return super(DjangoSingletonModelAdmin, self).change_view(
             request,
             object_id,
             form_url=form_url,
