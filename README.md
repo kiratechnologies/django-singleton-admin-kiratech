@@ -1,5 +1,5 @@
 
-[![PyPI version](https://badge.fury.io/py/django-singleton-admin-2.svg)](https://badge.fury.io/py/django-singleton-admin-2)
+[![PyPI version](https://badge.fury.io/py/django-singleton-admin-2.svg)](https://badge.fury.io/py/django-singleton-admin-2) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-singleton-admin-2)
 
 # Django Singleton Admin
 In dynamic applications, it can be somewhat of a pain to have static settings that *have* to be set in `settings.py`. Django Singleton Admin adds an easy way to edit singleton models (e.g a SiteSetting model) to allow administrators to change configuration on the fly.
