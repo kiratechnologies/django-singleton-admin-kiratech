@@ -31,7 +31,7 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
                     name='%s_change' % url_name_prefix),
             ]
             # By inserting the custom URLs first, we overwrite the standard URLs.
-        except OperationalError:
+        except Exception as e:
             logger.warning("Django Singleton failed to build URLs, likely because a database migration is required.")
             custom_urls = []
         return custom_urls + urls
