@@ -55,4 +55,4 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
         if self.model.objects.all():
             return self.model.objects.all()[0].pk
         else:
-            return 0 
+            return 1
