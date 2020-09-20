@@ -10,7 +10,17 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
     change_form_template = "django_singleton_admin/change_form.html"
 
     def has_add_permission(self, request):
+        if self.model.objects.all().count() == 0:
+            return True
         return False
+
+    def has_change_permission(self, request, obj=None):
+        if self.model.objects.all().count() == 1:
+            return True 
+        return False 
+
+    def has_view_permission(self, request, obj=None):
+        return False 
 
     def has_delete_permission(self, request, obj=None):
         return False
@@ -42,7 +52,7 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
         return HttpResponseRedirect("../../")
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
-        self.model.objects.get_or_create(pk=self.singleton_instance_id)
+        # self.model.objects.get_or_create(pk=self.singleton_instance_id)
         return super(DjangoSingletonModelAdmin, self).change_view(
             request,
             object_id,
@@ -55,4 +65,4 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
         if self.model.objects.all():
             return self.model.objects.all()[0].pk
         else:
-            return 1
+            return 1 
