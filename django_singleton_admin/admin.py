@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf import re_path
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.db.utils import OperationalError
@@ -35,7 +35,7 @@ class DjangoSingletonModelAdmin(admin.ModelAdmin):
                 'model_name': model_name,
             }
             custom_urls = [
-                url(r'^$',
+                re_path(r'^$',
                     self.admin_site.admin_view(self.change_view),
                     {'object_id': str(self.singleton_instance_id)},
                     name='%s_change' % url_name_prefix),
