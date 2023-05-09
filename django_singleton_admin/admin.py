@@ -1,4 +1,4 @@
-from django.conf import re_path
+from django.urls import re_path
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from django.db.utils import OperationalError
